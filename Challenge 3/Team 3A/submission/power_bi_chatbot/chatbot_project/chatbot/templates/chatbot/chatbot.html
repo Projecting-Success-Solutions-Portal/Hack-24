@@ -1,0 +1,193 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'chatbot/style.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />  
+
+  <title>Project.Hack24</title>
+</head>
+<body>
+<div class="container-fluid vh-100">
+  <div class="row">
+    <div class="col-3 p-3 text-white bg-dark vh-100 d-flex flex-column text-end">
+      <div>
+        <h1 class="fs-2 fw-bold mt-2"> Risk <i class="fa-solid fa-robot"></i></h1>
+      </div>
+    </div>
+    <div class="col-9 bg-white">  
+      <div class="container-fluid vh-100 d-flex flex-column">
+        <div class="row flex-grow-1">
+          <iframe title="Risk Ease (H24)" width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=049c17f5-be30-4c7f-b54d-1fe76921ecda&autoAuth=true&ctid=8dcc9478-13b7-4f15-8eb1-e5fa4e8ece6e" frameborder="0" allowFullScreen="true"></iframe>  
+        </div>
+        <div class="row flex-grow-1">
+          <div class="col-12 d-flex justify-content-center align-items-center">
+            <div class="bg-white w-100 d-flex flex-column" style="height: 40vh; border: 1px solid #ddd; border-radius: 8px; overflow: hidden;">
+              <ul class="list-unstyled messages-list flex-grow-1 p-3" style="overflow-y: scroll;">
+                <li class="message received">
+                  <div class="message-text m-3">
+                    <div class="message-sender">
+                      <b>AI Assistant</b>
+                    </div>
+                    <div class="message-content">
+                      Hi, How can I help you?
+                    </div>
+                  </div>
+                </li>
+              </ul>
+
+              <div class="w-100">
+                <div class="d-flex p-3 bg-white">
+                  <form class="message-form w-100">
+                    {% csrf_token %}
+                    <div class="input-group">
+                      <textarea id="user-input" class="form-control message-input" placeholder="Type your message here..." rows="1" style="resize: none;"></textarea>
+                      <button type="submit" class="btn btn-dark" id="send-button">
+                        <i class="fa-solid fa-paper-plane"></i>
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  const messageList = document.querySelector('.messages-list');
+  const messageForm = document.querySelector('.message-form');
+  const messageInput = document.querySelector('.message-input');
+  const sendButton = document.querySelector('#send-button');
+  
+  function scrollToBottom() {
+    messageList.scrollTop = messageList.scrollHeight;
+  }
+  
+  function disableInput(disable) {
+    messageInput.disabled = disable;
+    sendButton.disabled = disable;
+  }
+  
+  function formatTextWithBold(text) {
+    return text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+  }
+  
+  function sendMessage(event) {
+    event.preventDefault();
+
+    const message = messageInput.value.trim();
+
+    if (message.length === 0) {
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('csrfmiddlewaretoken', document.querySelector('[name=csrfmiddlewaretoken]').value);
+    formData.append('message', message);
+
+    const messageItem = document.createElement('li');
+    messageItem.classList.add('message', 'sent');
+    messageItem.innerHTML = `
+        <div class="message-text d-flex flex-row-reverse w-100">
+          <div class="message-content bg-light p-2 rounded responsive-user-response-width">
+            ${message}
+          </div>
+        </div>`;
+    messageList.appendChild(messageItem);
+    messageInput.value = '';
+
+    scrollToBottom();
+
+    const spinnerItem = document.createElement('li');
+    spinnerItem.id = 'loading-spinner';
+    spinnerItem.classList.add('message', 'received');
+    spinnerItem.innerHTML = `
+      <div class="message-text m-3">
+        <div class="message-content text-center">
+          <div class="spinner-border text-secondary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      </div>`;
+    messageList.appendChild(spinnerItem);
+
+    scrollToBottom();
+    disableInput(true);
+
+    fetch('', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => response.json()) 
+    .then(data => {
+      spinnerItem.remove();
+
+      const responseText = data.response || 'Sorry, there was an issue processing your message.';
+
+      const formattedResponseText = responseText.replace(/\n/g, '<br>');
+
+      const responseItem = document.createElement('li');
+      responseItem.classList.add('message', 'received');
+      responseItem.innerHTML = `
+        <div class="message-text m-3">
+          <div class="message-sender">
+            <b>AI Assistant</b>
+          </div>
+          <div class="message-content" style="white-space: normal;">
+            ${formattedResponseText}
+          </div>
+        </div>`;
+
+      messageList.appendChild(responseItem);
+
+      let index = 0;
+      const responseContent = responseItem.querySelector('.message-content'); 
+      const typingInterval = setInterval(() => {
+        if (index < formattedResponseText.length) {
+          responseContent.innerHTML = formatTextWithBold(formattedResponseText.substring(0, index + 1));
+          index++;
+          scrollToBottom();
+        } else {
+          clearInterval(typingInterval);
+          disableInput(false);
+          messageInput.focus();
+        }
+      }, 0);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      spinnerItem.remove();
+
+      const errorMessage = document.createElement('li');
+      errorMessage.classList.add('message', 'received');
+      errorMessage.innerHTML = `
+        <div class="message-text m-3">
+          <div class="message-sender"><b>AI Assistant</b></div>
+          <div class="message-content bg-secondary bg-gradient text-white p-2 rounded">Sorry, there was an error. Please try again later.</div>
+        </div>`;
+
+      messageList.appendChild(errorMessage);
+      scrollToBottom();
+      disableInput(false);
+      messageInput.focus();
+    });
+  }
+  messageForm.addEventListener("submit", sendMessage);
+  messageInput.addEventListener("keydown", (event) => {
+    if (event.key === 'Enter') {
+      sendMessage(event);
+    }
+  });
+  </script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+  <script src="{% static 'chatbot/app.js' %}"></script>
+  </html>
+  
