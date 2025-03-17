@@ -1,0 +1,36 @@
+Transform Datasets for Risk Ease (H24).pbix
+
+This guide is to assist connecting your PBI file to the correct source dataset (250120 PDAC Hack Risk data v4.1.xlsx)
+
+1. Get path to dataset: 250120 PDAC Hack Risk data v4.1.xlsx
+
+* Open up Risk Ease (H24).pbix
+* There may be a banner message that "There are pending changes in your queries that haven't been applied" - choose "Discard Changes" as you will be applying your own changes.
+* Click Home -> Transform Data -> Transform Data [This should take you to the Transform Data Page]
+* Go to D_Risks at folder: Other Queries[6]
+* Go to Source step in Applied Steps (the first step)
+* Change
+	= Folder.Files("C:\Users\<UserName>\Downloads\Hack24")
+  	to
+	= Folder.Files("<Path to folder where your copy of 250120 PDAC Hack Risk data v4.1.xlsx is saved") [Note: Path to folder, not path to file]
+	e.g
+* Note: 250120 PDAC Hack Risk data v4.1.xlsx MUST be the most recent xlsx file in this folder
+
+2. Update the source for every query
+
+* Note: When updating the source make sure you are in the first Applied Step called Source. DO NOT edit steps that are not Source
+* Update the sources for the following datasets
+	Transform File D_Risks [2]/Helper Queries [3]/Sample File
+	Transform File D_Mitigations [2]/Helper Queries [3]/Sample File (2)
+	Other Queries [6]/D_Risks
+	Other Queries [6]/D_Mitigations
+	Other Queries [6]/F_RiskHierarchy
+	Other Queries [6]/F_DateCreated
+	Other Queries [6]/F_Version
+
+When saving and refreshing the data you may get the following errors
+D_Risks: 2,138 rows loaded. 881 errors.
+D_Mitigations: 1,385 rows loaded. 1 error.
+
+This is due to datatype mismatchings in the datasets and is to be expected.
+If you encounter errors different from the ones above contact a member of the Hack team to provide assistance.
