@@ -1,0 +1,30 @@
+#Linear Regression Model to predict post mitigation cost from pre mitigation cost
+
+import pandas as pd
+import matplotlib.pyplot as plt
+from scipy import stats
+%pip install openpyxl
+
+df = pd.read_excel("250304 PDAC Hack Risk data v5.0 - Outliers Removed.xlsx",sheet_name="Risks") #outliers have been removed, but refinement maybe required.
+#print(df.columns)
+
+x = df["Pre Cost"]
+y = df["Post Cost"]
+
+slope, intercept, r, p, std_err = stats.linregress(x, y)
+def line_func(x):
+	y = slope * x + intercept    
+	return y
+
+pred_y = list(map(line_func, x))
+
+plt.scatter(x, y)
+plt.title('Pre vs Post mitigation Cost')
+plt.xlabel("Pre Cost (K)")
+plt.ylabel("Post Cost (K)")
+
+plt.plot(x, pred_y)
+plt.show()
+
+print("Post Cost: ",line_func(300)," For Pre Cost Value of 300") #Can input pre-mitigation cost and it will model the post mitigation costs.
+print("Correlation Co-effiecent: ",r) #show the correlation co-effiecent
