@@ -1,0 +1,33 @@
+.errorlist {
+    list-style: none;
+  }
+  
+  
+  .responsive-user-response-width {
+    max-width: 50%; 
+  }
+  
+  
+  @media (max-width: 1280px) {
+    .responsive-user-response-width {
+      max-width: 75%;
+    }
+  }
+  
+  
+  @media (max-width: 960px) {
+    .responsive-user-response-width {
+      max-width: 100%;
+    }
+  }
+  
+  
+  #loading-spinner .message-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  
+  
+  
