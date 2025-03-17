@@ -1,0 +1,7 @@
+%F,unit_id,seq_num,unit_abbrev,unit_name
+%R,103,0,ea,Each
+%R,213,202,kg,Kilo Gram
+%R,214,203,Sqm,Square Meter
+%R,215,204,Cum,Cublic Meter
+%R,217,102,lm,Linear Meter
+%R,220,500,sqft,Square Mete
