@@ -11,8 +11,8 @@ Risk Ease v2 Dashboard is building on the success of an existing risk dashboard 
 
 **Solution image**
 
-![alt text](https://github.com/Projecting-Success-Solutions-Portal/Hack-24/blob/main/Challenge%202/Team%202D/Team%202D-Solution-Screenshot.png?raw=true)
+![alt text](https://github.com/Projecting-Success-Solutions-Portal/Hack-24/blob/main/Challenge%202/Team%202F/Team2F-solution-screenshot.png?raw=true)
 
 
 **Link to team presentation:**   
-https://www.youtube.com/watch?v=nIIPBEFq-F8&list=PLM0EU9nRaeVAZ2thKHXLiE6RlI_uhQx8I&index=8
+No video uploaded to you tube
