@@ -1,4 +1,4 @@
-# Detailed Documentation
+# Solution Documentation
 
 ## **Python Modelling**
 
@@ -69,13 +69,6 @@
 ---
 
 ## **Team 1A Solution**
-
-### `Hitch Hackers.pptx`
-- Presentation detailing the project, challenges, and solution approach.
-- Covers predictive modeling, data extraction, and Power BI integration.
-
-### `Hitch Hacker.mp4`
-- Video explaining the problem, solution, and key takeaways.
 
 ### `JoinedTable_melted Wgraph Wdifference.xlsx`
 - Processed dataset used for visualization and analysis.
