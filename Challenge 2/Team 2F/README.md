@@ -15,4 +15,4 @@ Risk Ease v2 Dashboard is building on the success of an existing risk dashboard 
 
 
 **Link to team presentation:**   
-No video uploaded to you tube
+No video uploaded to youtube
