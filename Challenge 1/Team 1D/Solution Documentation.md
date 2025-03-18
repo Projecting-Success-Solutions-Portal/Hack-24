@@ -1,4 +1,4 @@
-### Project Documentation
+### Solution Documentation
 
 ## File Directory
 - **Resource Analysis Dashboard.pbix**: Power BI dashboard file containing resource allocation and activity tracking insights.
