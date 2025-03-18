@@ -11,7 +11,7 @@ A Python-powered, AI-enhanced, and Power BI-driven tool designed to help project
 
 <Then go to that uploaded file and copy it's url: screengrab-url and add below>
 
-![alt text](<screengrab-url>?raw=true)
+![alt text]([<screengrab-url>](https://github.com/Projecting-Success-Solutions-Portal/Hack-24/blob/main/Challenge%201/Team%201A/Team%201A%20-%20solution%20screenshot.png)?raw=true)
 
 
 **Link to team presentation:**   
