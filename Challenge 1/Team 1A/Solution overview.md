@@ -1,4 +1,4 @@
-## Project Overview
+## Solution Overview
 This project is a solution developed by **Team 1A** for the Rolls Royce Resource Adjustment Challenge. The challenge aims to create a tool that dynamically adjusts project activity durations based on resource data, recalculates critical paths, and highlights schedule impacts. This ensures efficient resource utilization and enhances decision-making.
 
 ## Folder Structure Summary
