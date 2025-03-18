@@ -7,11 +7,7 @@ Nicky, Indi, Sarah, Harsha, Louis, Taresh
 A Python-powered, AI-enhanced, and Power BI-driven tool designed to help project managers, resource managers, and stakeholders make informed, data-driven decisions when project constraints shift.
 
 **Solution image**
-<Take a screen shot in .png format (use MS Snipping tool) of the solution from the video or presentation and upload to Hack-<number>/Challenge <number>/Team <numberletter>/>
-
-<Then go to that uploaded file and copy it's url: screengrab-url and add below>
-
-![alt text]([<screengrab-url>](https://github.com/Projecting-Success-Solutions-Portal/Hack-24/blob/main/Challenge%201/Team%201A/Team%201A%20-%20solution%20screenshot.png)?raw=true)
+![alt text](https://github.com/Projecting-Success-Solutions-Portal/Hack-24/blob/main/Challenge%201/Team%201A/Team%201A%20-%20solution%20screenshot.png)?raw=true)
 
 
 **Link to team presentation:**   
