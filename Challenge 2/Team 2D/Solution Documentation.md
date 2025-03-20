@@ -69,6 +69,3 @@
 ## **3. About Project:Hack**
 This documentation was created as part of **Project:Hack** – a hackathon run by **Projecting Success** for the **Project Data Analytics** community. The goal is to leverage historical risk data, predictive analytics, and Power BI dashboards to enhance risk management capabilities.
 
----
-Would you like to refine or add any additional details? 🚀
-
