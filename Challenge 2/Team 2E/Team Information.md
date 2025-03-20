@@ -10,7 +10,7 @@ Team 2E developed a Power BI-driven solution that enhances risk foresight, enabl
 
 **Solution image**
 
-![alt text](https://github.com/Projecting-Success-Solutions-Portal/Hack-24/blob/main/Challenge%202/Team%202D/Team%202D-Solution-Screenshot.png?raw=true)
+![alt text](https://github.com/Projecting-Success-Solutions-Portal/Hack-24/blob/main/Challenge%202/Team%202E/Team2E-solution-screenshot.png)raw=true)
 
 
 **Link to team presentation:**   
