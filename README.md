@@ -12,7 +12,7 @@ https://www.linkedin.com/company/projsuccess/
 
 The Hack 24 repository is designed to store full end-to-end working solutions deemed appropriate for open-source solutions.
 
-The main purpose of Hack 19 is to solve business problems around project data analytics.
+The main purpose of Hack 24 is to solve business problems around project data analytics.
 
 ## List of Challenges
 Challenge 1: Dynamic Resource Adjusted Scheduling 
